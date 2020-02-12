@@ -28,6 +28,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ------------------------ */
+
+function jsworker_function(){
 function Rotate(data, width, height, rotation) {
     var newData = [];
     switch (rotation) {
@@ -2817,3 +2819,4 @@ self.onmessage = function(e) {
         });
     }
 };
+}
