@@ -1,0 +1,946 @@
+﻿<html>
+<head>
+    <style>
+    </style>
+    <meta name="viewport" content="width=device-width,height=device-height;minimum-height=device-height,minimum-scale=1, maximum-scale=1" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="Description" content="@ViewBag.Description" />
+    <meta name="Copyright" content="Copyright (c) 2015-2018 Build Found Ltd,All Rights Reserved" />
+    <link rel="icon" type="image/png" href="/images/mwm_logo_32.png">
+    <meta name="Keywords" content="@ViewBag.Keywords" />
+    <link rel="apple-touch-icon-precomposed" href="/images/mwm_logo_57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/images/mwm_logo_57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/mwm_logo_72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/mwm_logo_114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/mwm_logo_114.png" />
+    <link rel="icon" type="image/png" href="/images/mwm_logo_32.png" sizes="32x32">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/images/mwm_logo_144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" type="text/css" href="Content/LTRMain.css">
+</head>
+<body style='user-select:none; font-size:3vh;overflow:hidden; margin: 0px; padding: 0px; font-family: @Html.Raw(MWMResources.Resources.Site.FontName);'>
+<div id="productanim" style="display:none;position:absolute;border-color:white;border-width:4px;z-index: 4000000;width: 200px;height: 200px;background-color: white;opacity: 0.5;"></div>
+
+ <script type="text/javascript" src="scripts/jquery-1.10.2.min.js"></script>
+ <script type="text/javascript" src="content/pico.js"></script>
+<script type="text/javascript" src="content/qrcodelib.js"></script>
+<script type="text/javascript" src="content/DecoderWorker.js"></script>
+        <script type="text/javascript" src="content/webcodecamjs.js"></script>
+
+ <script type="text/javascript" src="contents"></script>
+<script type="text/javascript" src="scripts/MWMAPI.js"></script>
+<video></video>
+<div id="pagecontainer" class="isinvisible1rt">
+    <div id="countrychoice" class="flagvisible"><img onclick="showFlags();" id="languagec" style="cursor: pointer;width:8vh" src="Content/en-usa.png" /></div>
+
+    <div id="title" class="newsinvisible"></div>
+    <div id="flagswin" class="flagswindow closedwindow" style="visibility: hidden">
+        <p><button onclick="currentflag='en-usa';translate1('en');closeFlags();" style="width: 100%;padding:1vh"><img style="width:8vh" src="Content//en-usa.png" /><div> English</div></button></p>
+        <p>
+            <button onclick="currentflag='cn-sm';translate1('cn');closeFlags();" style="width: 100%;padding:1vh"><img style="width:8vh" src="Content//cn-sm.png" /><div> 普通话</div></button>
+        </p>
+        <p><button onclick="closeFlags()">X</button></p>
+    </div>
+    <div id="errorwindow" class="remotewindow closedwindow" style="visibility: hidden">
+        <span class="successshow" id="errvorshow"></span>
+        <p> <button onclick="closeError()">X</button></p>
+    </div>
+    <div id="videologinwindow" class="remotewindow closedwindow" style="visibility: hidden">
+     <canvas style="width:50vh" width="640" height="480" id="facedetection"></canvas>
+<p/>
+<button>Close</button>
+    </div>
+    <div id="successwindow" class="remotewindow closedwindow" style="visibility: hidden">
+        <span class="successshow" id="successshow"></span>
+        <p>  <button onclick="closeSuccess()">X</button></p>
+    </div>
+
+    <div id="opendevicewindow" class="remotewindow closedwindow" style="visibility: hidden">        
+        <p> <button>@MWMResources.Resources.Site.LoginButton</button> <button onclick="closeDevice()">X</button></p>
+    </div>
+    <div id="remoteaccesswin" class="remotewindow closedwindow" style="visibility: hidden">
+        <span id="anerror_show"></span>
+        <p>Your ID</p>
+        <p> <input class="inputids" id="ausername" /></p>
+        <p>Your PIN Code</p>
+        <p> <input class="inputids" type="password" id="apassword" /></p>
+        <p> <button onclick="signinHardware();">Sign in</button> <button onclick="closeRemote()">X</button></p>
+    </div>
+    <div id="innerx" style="width: 100%; overflow: hidden; position: absolute; left: 0px; bottom: 0; width: 47vw;">
+        <image style="position: static;" id="mainpicture" onload="" src="Img/BackgroundLTRNew.jpg" />
+    </div>
+    <div class="copyrightnote" >&copy; 2019 ONE LINE EUROPEAN TECHNOLOGY DEVELOPMENT COMPANY.</div>
+    <div id="toptitle" class="toptitlediv">
+        <div class="toptitle" style="width: 42vh; text-align: center;" id="atoptitle" onclick="setTopTitle(this);"><img id="glyph" class="glyph1" style="opacity: 0.5;" src="/Images/MainPage/eyes.gif" /></div>
+        <div class="toptitle" id="atoptitle" onclick="setToptTitle(this);"><img style="width:40vh" src="img/FGC.png" /></div>
+        <div id="newsbar1" class="newsvisible" style="margin-top:10;font-size:30"></div>
+        <div id="newsbar2" class="newsinvisible" style="margin-top:10;font-size:30"></div>
+    </div>
+    <div id="menus" class="menusdiv">
+        <div class="atitle0" id="atitle1" onmouseup="return false;" onclick="setTitle(this);return false;">List</div>
+        <div class="atitle1" id="atitle2" onmouseup="return false;" onclick="setTitle(this);return false;">Find</div>
+        <div class="atitle2" id="atitle3" onmouseup="return false;" onclick="setTitle(this);return false;">Checkout</div>
+        <div class="atitle3" id="atitle4" onmouseup="return false;" onclick="setTitle(this);return false;">Purchase</div>
+        <div class="atitle4" id="atitle5" onmouseup="return false;" onclick="setTitle(this);return false;">Login</div>
+    </div>
+    <div id="sizeelement" style="overflow: hidden; display: block; position: absolute; left: 0px; top: 0px; bottom: 0px; right: 0px">
+        <div class="toinvisible" id="memberstab">
+            <img class="imagemenus" src="MainImages/checkout.png">
+            <div class="contentdata" style="text-align: center">
+                    <p><span id="amount"></span></p>
+                    <p><button onclick="setTitle(atitle1);" id="purchaselist">Purchase List</button></p>
+                    <p><button onclick="" id="checkoutwechat">Checkout by WeChat</button></p>
+                    <p><button onclick="" id="checkoutmastercard">Checkout by MasterCard </button></p>
+                    <p><button onclick="" id="cancelpurchase">Cancel Shopping</button></p>
+            </div>
+        </div>
+
+        <div class="toinvisible" id="someviewertab">
+            <img class="imagemenus" src="MainImages/checkout.png">
+            <div class="contentdata">
+                <p><button onclick="window.location = '/Home/PrivacyPolicy';return flase;" style="width: 49vh">Privacy Policy</button></p>
+                <p><button onclick="window.location = '/Home/TermsOfService';return flase;" style="width: 49vh">Terms of Service</button></p>
+                <p><button onclick="window.location = '/Home/ContactUs';return flase;" style="width: 49vh">Contact Us</button></p>
+                <p><button onclick="window.location = '/Home/About';return flase;" style="width: 49vh">About</button></p>
+                <p><button onclick="window.location = '/Home/News';return flase;" style="width: 49vh">News</button></p>
+            </div>
+        </div>
+        <div class="toinvisible" id="developerstab">
+            <img class="imagemenus" src="MainImages/ShoppingList.png">
+            <div class="contentdata">
+                <p>
+		<span id="shoplist">Your Shopping list :</span><span id="totallist"/>
+                    <p><button onclick="setTitle(atitle3);" id='checkoutnow'>Checkout Now</button></p>
+
+                </p>
+   		<div style="height:70%">
+   	            <table id="purchaseList" style="color:white"></table>		
+		</div>
+            </div>
+        </div>
+        <div class="toinvisible" id="enterprisetab">
+            <img class="imagemenus" src="MainImages/find.png">
+            <div class="contentdata">
+                <p>
+                    <span id="findthisshop">Find your product in this shop</span>
+                </p>
+                <div style="text-align: center">
+                    <p><button onclick="" id="findbypicture">Find Product By Picture</button></p>
+                    <p><button onclick=""id="findbybarcode">Find Product by Barcode</button></p>
+			<img src="images/ShopMap.png"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="toinvisible" id="supporttab">
+            <img class="imagemenus" src="MainImages/Shopping.png">
+            <div class="contentdata">
+                     <div> 
+			<p>Hold your purchase Barcode or QRCode infront of camera</p>
+			<canvas id="videopurchase" autoplay width="640px" height="480" style="margin-top:20;border-radius:5px;width:50vh"> </canvas>
+		    </div>
+
+            </div>
+        </div>
+
+        <div class="mainshow" id="downloadtab">
+            <img class="imagemenus" src="MainImages/Login.png">
+            <div class="contentdata" style="" id="logins">
+                <p>
+                    <span id='loginto'>Login to your account to hold your purchase list every where with you </span>
+                    <br />
+                    <div style="text-align: center;">
+                <p><button onclick="showRemote();" id='loginid'>Login Through ID</button></p>
+                <p><button onclick="showVideoLogin();" id='loginface'>Login Through FaceID or JCard</button></p>
+                    </p>
+                </div>
+            </div>
+            <div class="contentdata" style="display:none" id="loggedin">
+                <p id="welcomemessage">
+			</p>
+                    <br />
+                    <div style="text-align: center;">
+                <p><button onclick="setTitle(atitle4);" id='startshopping'>Start Shopping Here</button></p>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script language="javascript">
+                var langs={cn:{holdyour:'将你购买的条形码或二维码放在摄像机前',
+				findproduct:'在这家商店可以找到你们的产品',
+				list:'清单',
+				checkout:'结账台',
+				find:'查找',
+				login:'注册',
+				purchase:'购买',
+findbypicture:'按产品和图片查找',
+findbybarcode:'通过条形码找到你的产品',
+welcome:'詹姆斯·麦克唐纳，欢迎光临FGC商店, 你的账户里会有你的购物清单，你可以自己做所有的事,你可以参加我们的奖品，以后也可以参加',
+startshopping:'开始在这里购物'	,
+purchaselist:'购买清单',
+checkoutwechat:'付款通过微信',
+checkoutmastercard:'通过万事达信用卡付款'
+,findinthisshop:'在这家商店可以找到你们的产品',
+cancelpurchase:'取消购买',
+total:'总共l ' , 
+saved:'你省 ',
+rmb:'元',
+item:'条款',
+unitprice:'单价',
+quantity:'数量',
+discount:'折扣',
+price:'价格',
+shoplist:'你的购物清单: ',
+faceidlogin:'通过faceid或FGCCard登录',
+idlogin:'通过ID登录',
+logintoaccount:'登录到您的帐户并随身携带购物清单',
+checkoutnow:'立即结帐'
+			},
+		en:{findproduct:'Find your product in this shop',
+			holdyour:'Hold your purchase barcode or qrcode infront of camera'
+			,list:'List',
+			checkout:'Checkout',
+			find:'Find',
+			login:'Login',
+			purchase:'Purchase'
+,findinthisshop:'Find your product in this shop',
+findbypicture:'Find by product by Picture',
+findbybarcode:'Find your product by Barcode',
+welcome:'James McDonald, Welcome to FGC Shop, you will have your purchase list in your account, you can do all yourself, just place barcode infront of camera and after you finish your shopping hit checkout button, you might participate in our prizes and iscount in the future'	,
+startshopping:'Start Shopping here'	,
+purchaselist:'Shopping List'
+,checkoutwechat:'Checkout via WECHAT',
+checkoutmastercard:'Checkout via mastercard',
+cancelpurchase:'Cancel shopping',
+total:'Total ' , 
+saved:'You Saved ',
+rmb:'RMB',
+item:'Item',
+unitprice:'Unit Price',
+quantity:'Quantity',
+discount:'Discount',
+price:'Price',
+shoplist:'Your Shopping list : ',
+faceidlogin:'Login through FaceId or FGCCard',
+idlogin:'Login through ID',
+logintoaccount:'Login to your account and hold your shopping list everywhere with you',
+checkoutnow:'Checkout now'
+
+		}};
+currentlang='en';
+currentflag='en-usa';
+var productslist=[];
+var purchases = [{itemname:"Nestle Nescafe 150gr",price:95,count:2,discount:5},{itemname:"Rice 10KG Thiland StarBrand",price:105,count:1,discount:10},
+{itemname:"PepsiCola 2.25Ltr",price:5.5,count:5,discount:0},{itemname:"Shanghai Milk 1ltr",price:12,count:4,discount:20}];
+		function translate1(lang){
+currentlang=lang;
+     document.getElementById('atitle1').innerHTML=langs[lang]['list'];
+     document.getElementById('atitle2').innerHTML=langs[lang]['find'];
+     document.getElementById('atitle3').innerHTML=langs[lang]['checkout'];
+     document.getElementById('atitle4').innerHTML=langs[lang]['purchase'];
+     document.getElementById('atitle5').innerHTML=langs[lang]['login'];
+     document.getElementById('shoplist').innerHTML=langs[lang]['shoplist'];
+     document.getElementById('welcomemessage').innerHTML=langs[lang]['welcome'];
+     document.getElementById('startshopping').innerHTML=langs[lang]['startshopping'];
+     document.getElementById('loginid').innerHTML=langs[lang]['idlogin'];
+     document.getElementById('loginface').innerHTML=langs[lang]['faceidlogin'];
+     document.getElementById('loginto').innerHTML=langs[lang]['logintoaccount'];
+     document.getElementById('checkoutnow').innerHTML=langs[lang]['checkoutnow'];
+     document.getElementById('findthisshop').innerHTML=langs[lang]['findinthisshop'];
+     document.getElementById('findbypicture').innerHTML=langs[lang]['findbypicture'];
+     document.getElementById('findbybarcode').innerHTML=langs[lang]['findbybarcode'];
+     document.getElementById('purchaselist').innerHTML=langs[lang]['purchaselist'];
+     document.getElementById('checkoutwechat').innerHTML=langs[lang]['checkoutwechat'];
+     document.getElementById('checkoutmastercard').innerHTML=langs[lang]['checkoutmastercard'];
+     document.getElementById('cancelpurchase').innerHTML=langs[lang]['cancelpurchase'];
+			document.getElementById('languagec').src='Content/'+currentflag+'.png';
+updatePurchases();
+		} 
+translate1('en');
+		var initialized = false;
+		function button_callback() {
+			/*
+				(0) check whether we're already running face detection
+			*/
+			if(initialized)
+				return; // if yes, then do not initialize everything again
+			/*
+				(1) prepare the pico.js face detector
+			*/
+			var update_memory = pico.instantiate_detection_memory(5); // we will use the detecions of the last 5 frames
+			var facefinder_classify_region = function(r, c, s, pixels, ldim) {return -1.0;};
+			var cascadeurl = 'https://raw.githubusercontent.com/nenadmarkus/pico/c2e81f9d23cc11d1a612fd21e4f9de0921a5d0d9/rnt/cascades/facefinder';
+			fetch(cascadeurl).then(function(response) {
+				response.arrayBuffer().then(function(buffer) {
+					var bytes = new Int8Array(buffer);
+					facefinder_classify_region = pico.unpack_cascade(bytes);
+					console.log('* cascade loaded');
+				})
+			})
+			/*
+				(2) get the drawing context on the canvas and define a function to transform an RGBA image to grayscale
+			*/
+			var ctx = document.getElementById('facedetection').getContext('2d');
+			function rgba_to_grayscale(rgba, nrows, ncols) {
+				var gray = new Uint8Array(nrows*ncols);
+				for(var r=0; r<nrows; ++r)
+					for(var c=0; c<ncols; ++c)
+						// gray = 0.2*red + 0.7*green + 0.1*blue
+						gray[r*ncols + c] = (2*rgba[r*4*ncols+4*c+0]+7*rgba[r*4*ncols+4*c+1]+1*rgba[r*4*ncols+4*c+2])/10;
+				return gray;
+			}
+			/*
+				(3) this function is called each time a video frame becomes available
+			*/
+			var processfn = function(video, dt) {
+  		 		if (loginVideoClosed)
+					return;
+				// render the video frame to the canvas element and extract RGBA pixel data
+				ctx.drawImage(video, 0, 0);
+				var rgba = ctx.getImageData(0, 0, 640, 480).data;
+				// prepare input to `run_cascade`
+				image = {
+					"pixels": rgba_to_grayscale(rgba, 480, 640),
+					"nrows": 480,
+					"ncols": 640,
+					"ldim": 640
+				}
+				params = {
+					"shiftfactor": 0.1, // move the detection window by 10% of its size
+					"minsize": 100,     // minimum size of a face
+					"maxsize": 1000,    // maximum size of a face
+					"scalefactor": 1.1  // for multiscale processing: resize the detection window by 10% when moving to the higher scale
+				}
+				// run the cascade over the frame and cluster the obtained detections
+				// dets is an array that contains (r, c, s, q) quadruplets
+				// (representing row, column, scale and detection score)
+				dets = pico.run_cascade(image, facefinder_classify_region, params);
+				dets = update_memory(dets);
+				dets = pico.cluster_detections(dets, 0.2); // set IoU threshold to 0.2
+				// draw detections
+ 				if (dets.length==1){
+             		          setLoginInterval();
+				}
+				for(i=0; i<dets.length; ++i)
+					// check the detection score
+					// if it's above the threshold, draw it
+					// (the constant 50.0 is empirical: other cascades might require a different one)
+					if(dets[i][3]>50.0)
+					{
+						ctx.beginPath();
+						ctx.arc(dets[i][1], dets[i][0], dets[i][2]/2, 0, 2*Math.PI, false);
+						ctx.lineWidth = 3;
+						ctx.strokeStyle = 'red';
+						ctx.stroke();
+					}
+			}
+			/*
+				(4) instantiate camera handling (see https://github.com/cbrandolino/camvas)
+			*/
+			var mycamvas = new camvas(ctx, processfn);
+			/*
+				(5) it seems that everything went well
+			*/
+			initialized = true;
+		}
+function setLoginInterval(){  
+   loginVideoClosed=true;
+   var timeout=setTimeout(doVideoLogin,7000);
+}
+function doVideoLogin(){
+ //  setTitle(document.getElementById("supporttab"));
+   document.getElementById("logins").style.display="none";
+   document.getElementById("loggedin").style.display="";
+   closeVideoLogin();
+}
+const audioSelect = document.querySelector('select#audioSource');
+const videoSelect = document.querySelector('select#videoSource');
+var productsliststyle="color: white;width: 100%;border-right-width: 1px;border-right-style: dashed;border-right-color: white;background-color: black;opacity: 0.8;";
+ function updatePurchaseList(){
+//      
+     $("#purchaseList").find("tr").remove()	
+     var element=document.getElementById("purchaseList");
+     var r1 = element.insertRow();
+     var c1=r1.insertCell();
+c1.style=productsliststyle;
+     c1.innerHTML=langs[currentlang]['item'];
+     c1=r1.insertCell();
+     c1.innerHTML=langs[currentlang]['unitprice'];
+c1.style=productsliststyle;
+     c1=r1.insertCell();
+     c1.innerHTML=langs[currentlang]['quantity'];
+c1.style=productsliststyle;
+     c1=r1.insertCell();
+c1.style=productsliststyle;
+     c1.innerHTML=langs[currentlang]['discount'];
+     c1=r1.insertCell();
+c1.style=productsliststyle;
+     c1.innerHTML=langs[currentlang]['price'];
+var total=0;
+var saved=0;
+     for(var i = 0;i<purchases.length;i++){
+        var r = element.insertRow();
+        var c=r.insertCell();
+	c.style=productsliststyle;
+        c.innerHTML=purchases[i].itemname;
+        c=r.insertCell();
+	c.style=productsliststyle;
+        c.innerHTML=purchases[i].price+"RMB";
+        c=r.insertCell();
+	c.style=productsliststyle;
+        c.innerHTML=purchases[i].count;
+        c=r.insertCell();
+	c.style=productsliststyle;
+        c.innerHTML=purchases[i].discount+"%";
+        c=r.insertCell();
+	c.style=productsliststyle;
+        var amount=((purchases[i].count*purchases[i].price)-(((purchases[i].count*purchases[i].price)/100)*purchases[i].discount));
+        c.innerHTML=amount+"RMB";   
+        total+=amount;
+	saved+=((purchases[i].count*purchases[i].price)/100)*purchases[i].discount;	
+     }
+     document.getElementById("totallist").innerHTML=
+langs[currentlang]['total']+' '+total.toFixed(2)+langs[currentlang]['rmb']+' ,'+langs[currentlang]['saved']+' '+saved.toFixed(2)+langs[currentlang]['rmb'];
+"Total "+total.toFixed(2)+"RMB , You Saved "+saved.toFixed(2)+"RMB";	
+updatePurchases();
+  }
+  function upateCheckout(){
+     var total=0,saved=0;
+     for(var i = 0;i<purchases.length;i++){
+        var amount=((purchases[i].count*purchases[i].price)-(((purchases[i].count*purchases[i].price)/100)*purchases[i].discount));
+        total+=amount;
+	saved+=((purchases[i].count*purchases[i].price)/100)*purchases[i].discount;	
+      }
+document.getElementById("amount").innerHTML=
+langs[currentlang]['total']+' '+total.toFixed(2)+langs[currentlang]['rmb']+' ,'+langs[currentlang]['saved']+' '+saved.toFixed(2)+langs[currentlang]['rmb'];
+//"Total "+total.toFixed(2)+"RMB , You Saved "+saved.toFixed(2)+"RMB";
+  }
+const constraints = {
+    video: {
+      deviceId:"videoinput"// {exact: videoSelect.value}
+    }
+  };
+    var loadingdone = 0;
+    var zorientation = "@MWMResources.Resources.Site.ZMOrientation";
+//    var @Html.Raw(MWMResources.Resources.Site.NEWARRAY);
+newsArray=["PEPSI COLA","Nestle Diaries","Nestle Corporation"];
+    var newsCount = 0;
+    var currentNewsElement = null;
+    function changeToNews() {
+        //document.getElementById("newsbar1").className = (newsCount % 2 !== 0) ? "newsinvisible" : "newsvisible";
+        //document.getElementById("newsbar2").className = (newsCount % 2 === 0) ? "newsinvisible" : "newsvisible";
+        if (currentNewsElement !== null)
+            currentNewsElement.className = "newsinvisible";
+        currentNewsElement = "newsbar" + (1 + (newsCount % 2));
+        currentNewsElement.className = "newsvisible";
+        document.getElementById("newsbar" + (1 + (newsCount % 2))).innerHTML = newsArray[newsCount];
+        newsCount++;
+        newsCount = newsCount >= newsArray.length ? 0 : newsCount;
+    }
+    function setHeaderTime() {
+        changeToNews();
+    }
+    setInterval(setHeaderTime, 3000);
+
+    var oldWidth = null;
+    var oldHeight = null;
+    setInterval(checkResize, 500);
+    function checkResize() {
+        var aHeight = document.documentElement.clientHeight;
+        var aWidth = document.documentElement.clientWidth;
+        if (aHeight !== oldHeight || aWidth !== oldWidth) {
+            setLocation();
+            oldWidth = aWidth;
+            oldHeight = aHeight;
+        }
+    }
+
+    function setToptTitle(parameters) {
+//            document.getElementById("glyph").className = "glyph2";
+        document.getElementById("toptitle").className = "toptitlediv2";
+        document.getElementById("menus").className = "menusdiv2";
+        if (currentElement !== null) {
+            currentElement.className = "toinvisible";
+        }
+        currentElement = document.getElementById("someviewertab");
+        currentElement.className = "mainshow";
+    }
+    function doClose() {
+        closeWindow(this.parentWindow);
+    }
+    var windowsList = [];
+    var titles = [{ element: document.getElementById("atitle1") }, { element: document.getElementById("atitle2") }, {
+            element: document.getElementById("atitle3")
+        },
+        { element: document.getElementById("atitle4") }, { element: document.getElementById("atitle5") }];
+
+    for (var i = 0; i < 5; i++)
+        titles[i].element.ccaposition = i;
+    function arrangeAll() {
+        for (var i = 0; i < 5; i++) {
+            titles[i].element.ccposition = i;
+            titles[i].element.className = "atitle" + i;
+        }
+    }
+    arrangeAll();
+    function setLocation() {
+        //   document.title="ok";
+        var image = document.getElementById("mainpicture");
+        var aHeight = document.getElementById("sizeelement").offsetHeight; //document.documentElement.clientHeight;
+        var aWidth = document.getElementById("sizeelement").offsetWidth;//document.documentElement.clientWidth;
+        if (aHeight < aWidth && Math.round(aWidth * (image.naturalHeight / image.naturalWidth)) > aHeight) {
+            image.style.width = (aWidth) + "px";/*Math.round(document.body.offsetWidth*(image.naturalWidth/image.naturalHeight))+'px';*/
+            image.style.height = Math.round(aWidth * (image.naturalHeight / image.naturalWidth)) + 'px';
+            /*	image.style.left=(aWidth-Math.round(window.outerHeight*(image.naturalWidth/image.naturalHeight)))+"px";*/
+            //	document.title=	image.style.width+","+	image.style.height;
+        }
+        else {
+            image.style.height = (aHeight) + "px";/*Math.round(document.body.offsetWidth*(image.naturalWidth/image.naturalHeight))+'px';*/
+            image.style.width = Math.round(aHeight * (image.naturalWidth / image.naturalHeight)) + 'px';
+            /*	image.style.top=(window.outerHeight-Math.round(window.outerWidth*(image.naturalHeight/image.naturalWidth)))+"px";*/
+            //	document.title=	image.style.width+","+	image.style.height;
+        }
+
+        //	document.title=	aWidth+","+aHeight+"  "+image.style.width+","+	image.style.height;
+        document.getElementById("innerx").scrollLeft = Math.round((image.offsetWidth - document.getElementById("innerx").offsetWidth) / 2);
+        document.getElementById("innerx").scrollTop = Math.round((image.offsetHeight - document.getElementById("innerx").offsetHeight) / 2);
+        document.getElementById("innerx").style.width = aWidth + "px";
+        document.getElementById("innerx").style.height = aHeight + "px";
+        //document.title=aWidth+" "+aHeight+" "+document.getElementById("remoteaccesswin").offsetWidth+" "+document.getElementById("remoteaccesswin").offsetHeight;
+        document.getElementById("remoteaccesswin").style.left =
+            Math.round((aWidth - document.getElementById("remoteaccesswin").offsetWidth) / 2) + "px";
+        document.getElementById("remoteaccesswin").style.top =
+            Math.round((aHeight - document.getElementById("flagswin").offsetHeight) / 2) + "px";
+        document.getElementById("flagswin").style.left =
+            Math.round((aWidth - document.getElementById("flagswin").offsetWidth) / 2) + "px";
+        document.getElementById("flagswin").style.top =
+            Math.round((aHeight - document.getElementById("flagswin").offsetHeight) / 2) + "px";
+        document.getElementById("successwindow").style.left =
+            Math.round((aWidth - document.getElementById("successwindow").offsetWidth) / 2) + "px";
+        document.getElementById("videologinwindow").style.left =
+            Math.round((aWidth - document.getElementById("videologinwindow").offsetWidth) / 2) + "px";
+	
+        document.getElementById("videologinwindow").style.top =
+            Math.round((aHeight - document.getElementById("videologinwindow").offsetHeight) / 2) + "px";
+        document.getElementById("successwindow").style.top =
+            Math.round((aHeight - document.getElementById("successwindow").offsetHeight) / 2) + "px";
+        document.getElementById("errorwindow").style.left =
+            Math.round((aWidth - document.getElementById("errorwindow").offsetWidth) / 2) + "px";
+        document.getElementById("errorwindow").style.top =
+            Math.round((aHeight - document.getElementById("errorwindow").offsetHeight) / 2) + "px";
+        document.getElementById("opendevicewindow").style.left =
+            Math.round((aWidth - document.getElementById("opendevicewindow").offsetWidth) / 2) + "px";
+        document.getElementById("opendevicewindow").style.top =
+            Math.round((aHeight - document.getElementById("opendevicewindow").offsetHeight) / 2) + "px";
+
+
+        try {
+            ;
+            hideVerticalElements(aWidth / aHeight < 1.75, aWidth / aHeight < 1.19);
+        }
+        catch (e) {
+        }
+        }
+
+        var currentUrl = "";
+        function loginHardware(value) {
+        switch (value.code) {
+        case 0:
+            document.getElementById('anerror_show').innerHTML = "@MWMResources.Resources.Site.UserIsOffline";
+            break;
+        case -1:
+            document.getElementById('anerror_show').innerHTML = "@MWMResources.Resources.Site.RemoteUserInvalidPassword";
+            break;
+        case 1:
+                closeRemote();
+            currentUrl = value.value.redirectUrl;
+            showSuccessMessage("@MWMResources.Resources.Site.SpecifiedDeviceOnline", "<button data-dismiss='modal' onclick='openLink();' style='width:100%'>@MWMResources.Resources.Site.OpenDevice</button>");
+            try {
+                /*                    window.open(currentUrl);*/
+            } catch (e) {
+            }
+            break;
+        }
+    }
+        function openLink() {
+            window.open(currentUrl);
+            closeSuccess();
+        }
+
+	var videologin=false;	
+        function signinHardware() {
+		if (document.getElementById("ausername").value.toUpperCase()=="123"&&document.getElementById("apassword").value.toUpperCase()=="123"){
+			doVideoLogin();
+closeRemoteWindow();
+		}
+            return;
+            document.getElementById('anerror_show').innerHTML = '';
+            MWMAPI.openHardwareByUsername(document.getElementById("ausername").value.replace(" ", ""), document.getElementById("apassword").value,"@MWMResources.Resources.Site.ActiveLanguage" , loginHardware);
+        }
+
+        function showSuccessMessage(subject, message) {
+            document.getElementById("successshow").innerHTML = message;
+            showWindow(document.getElementById("successwindow"));
+        }
+var videopurchase=false;
+        function handlePurchaseSuccess(stream) {
+document.getElementById("videopurchase").srcObject = stream;
+   document.title="started";
+}
+
+//id="videopurchase" 
+        function showPurchase(subject, message) {
+		 decoder.play();
+		return;
+             if (videopurchase) return;
+		videopurchase=true;
+//            document.getElementById("videologinwindow").innerHTML = message;
+navigator.mediaDevices.getUserMedia(constraints).then(handlePurchaseSuccess).catch(handleVideoLoginError);
+        }
+	var loginVideoClosed=true;
+        function showVideoLogin(subject, message) {
+            loginVideoClosed=false; 
+	    button_callback(this);
+            showWindow(document.getElementById("videologinwindow"));
+            return;
+            showWindow(document.getElementById("videologinwindow"));
+             if (videologin) return;
+		videologin=true;
+//            document.getElementById("videologinwindow").innerHTML = message;
+
+navigator.mediaDevices.getUserMedia(constraints).then(handleVideoLoginSuccess).catch(handleVideoLoginError);
+        }
+function handleVideoLoginError(){
+}
+        function handleVideoLoginSuccess(stream) {
+document.getElementById("videoLogin").srcObject = stream;
+   document.title="started";
+}
+        function showErrorMessage(subject,message) {
+            document.getElementById("errorshow").innerHTML = message;
+            showWindow(document.getElementById("errorwindow"));
+        }
+        function closeError() {
+            closeWindow(document.getElementById("errorwindow"));
+        }
+        function closeSuccess() {
+            closeWindow(document.getElementById("successwindow"));
+        }
+        function closeVideoLogin() {
+            closeWindow(document.getElementById("videologinwindow"));
+             loginVideoClosed=true;
+        }
+    window.onresize = setLocation;
+    setLocation();
+    function setTitle(value) {
+//            document.getElementById("glyph").className = "glyph1";
+        document.getElementById("toptitle").className = "toptitlediv";
+        document.getElementById("menus").className = "menusdiv";
+        var item = titles[value.ccposition];
+        for (var i = value.ccposition; i < 5; i++) {
+            titles[i] = titles[i + 1];
+        }
+        titles[4] = item;
+        /*  if (document.getElementById("developerstab").visibles===1) {
+         document.getElementById("developerstab").className="toinvisible";
+        document.getElementById("developerstab").visibles=0;
+        } else {
+         document.getElementById("developerstab").className="mainshow";
+        document.getElementById("developerstab").visibles=1;
+        }*/
+        arrangeAll();
+        if (currentElement !== null) {
+            currentElement.className = "toinvisible";
+        }
+        currentElement = value;
+        switch (value.ccaposition) {
+        case 0:
+            currentElement = document.getElementById("developerstab");
+	    updatePurchaseList();
+		decoder.stop();
+            break;
+        case 1:
+            currentElement = document.getElementById("enterprisetab");
+             decoder.stop();
+            break;
+        case 2:
+            currentElement = document.getElementById("memberstab");
+	     upateCheckout();
+decoder.stop();
+            break;
+        case 3:
+            currentElement = document.getElementById("supporttab");
+	showPurchase();
+            break;
+        case 4:
+            currentElement = document.getElementById("downloadtab");
+		decoder.stop();
+            break;
+        }
+        currentElement.className = "mainshow";
+    }
+    var currentElement = document.getElementById("downloadtab");
+    function findRule(name) {
+        for (var c = 0; c < document.styleSheets.length; c++) {
+            var sheet = document.styleSheets[0];
+            var rules = sheet.cssRules || sheet.rules;
+            for (var i = 0; i < rules.length; i++) {
+                if (rules[i].selectorText === name) {
+                    return rules[i];
+                }
+            }
+        }
+        return null;
+    }
+    function closeFlags() {
+        closeWindow(document.getElementById("flagswin"));
+    }
+    function showFlags() {
+        showWindow(document.getElementById("flagswin"));
+    }
+    function showRemote() {
+        showWindow(document.getElementById("remoteaccesswin"));
+    }
+
+    function closeRemote() {
+        closeWindow(document.getElementById("remoteaccesswin"));
+    }
+    function showWindow(element) {
+        element.style.visibility = "visible";
+        if (!element.shadowBox) {
+            element.shadowBox = element.shadowBox || document.createElement("div");
+            document.body.appendChild(element.shadowBox);
+        }
+        element.shadowBox.style.zIndex = 40000 + windowsList.length;
+        element.shadowBox.style.display = "block";
+        element.shadowBox.className = "shadowbox";
+        element.shadowBox.onclick = doClose;
+        element.shadowBox.parentWindow = element;
+        element.style.zIndex = 40000 + windowsList.length + 1;
+        element.classList.remove("closedwindow");
+        setLocation();
+        windowsList[windowsList.length] = element;
+        element.closing = false;
+    }
+    function closeWindow(element) {
+        var transition;
+        if ('ontransitionend' in window) {
+            // Firefox
+            transition = 'transitionend';
+        } else if ('onwebkittransitionend' in window) {
+            // Chrome/Saf (+ Mobile Saf)/Android
+            transition = 'webkitTransitionEnd';
+        } else if (element.parentWindow && ('onotransitionend' in element.parentWindow || navigator.appName === 'Opera')) {
+            // Opera
+            // As of Opera 10.61, there is no "onotransitionend" property added to DOM elements,
+            // so it will always use the navigator.appName fallback
+            transition = 'oTransitionEnd';
+        } else {
+            // IE - not implemented (even in IE9) :(
+            transition = 'transitionend';
+        }
+        // Example usage
+        element.addEventListener(transition, transitionEnd, false);
+
+
+        element.closing = true;
+        element.classList.add("closedwindow");
+        element.shadowBox.style.display = "none";
+        windowsList[windowsList.length - 1] = null;
+        windowsList.length--;
+    }
+
+    function transitionEnd() {
+        if (this.closing)
+            this.style.visibility = "hidden";
+    }
+    function checkLoad() {
+        if (loadingdone !== 0) {
+            document.getElementById("pagecontainer").className = "isvisible";
+            setLocation();
+        }
+    }
+
+    jQuery(function($) {
+        loadingdone++;
+        checkLoad();
+    });
+    function imageLoaded() {
+        loadingdone++;
+        checkLoad();
+    }
+    var fr = null;
+    function hideVerticalElements(value, value2) {
+        //fr=fr||findRule(".hideContents");
+        var toHide = document.getElementsByName("tohide");
+        for (var c = 0; c < toHide.length; c++) {
+            toHide[c].style.display = value ? "none" : "";
+        }
+        var toHide = document.getElementsByName("tohide1");
+        for (var c = 0; c < toHide.length; c++) {
+            toHide[c].style.display = value2 ? "none" : "";
+        }
+        //  fr.style.display=value?"none":"";
+    }
+
+    function updatePurchases(){
+//           document.getElementById("atitle1").innerHTML="List("+purchases.length+")";
+  document.getElementById("atitle1").innerHTML=langs[currentlang]['list']+"("+purchases.length+")";
+	}
+updatePurchases();
+    </script>
+
+<script type="text/javascript">
+function getOffset( el ) {
+    var _x = 0;
+    var _y = 0;
+    while( el && !isNaN( el.offsetLeft ) && !isNaN( el.offsetTop ) ) {
+        _x += el.offsetLeft - el.scrollLeft;
+        _y += el.offsetTop - el.scrollTop;
+        el = el.offsetParent;
+    }
+    return { top: _y, left: _x };
+}
+            var txt = "innerText" in HTMLElement.prototype ? "innerText" : "textContent";
+            var arg = {
+		grayScale:true,	
+sharpness:[0, -1, 0, -1, 5, -1, 0, -1, 0],
+                resultFunction: function(result) {
+                    /*
+                        result.format: code format,
+                        result.code: decoded string,
+                        result.imgData: decoded image data
+                    */
+                   var offset1=getOffset(document.getElementById("videopurchase"));
+                   var offset2=getOffset(document.getElementById("atitle4"));
+		   document.getElementById("productanim").style.width=document.getElementById("videopurchase").offsetWidth+"px";
+		   document.getElementById("productanim").style.height=document.getElementById("videopurchase").offsetHeight+"px";
+		   document.getElementById("productanim").style.left=offset1.left+"px";
+		   document.getElementById("productanim").style.top=offset1.top+"px";
+document.getElementById("productanim").style.opacity=1;
+document.getElementById("productanim").style.display="";
+			
+//$("#productanim").animate({left: offset1.left+"px",top: offset1.top+"px",width: document.getElementById("videopurchase").offsetHeight+"px",height: document.getElementById("videopurchase").offsetWidth+"px"},"fast");
+$("#productanim").animate({left: offset2.left+"px",top: offset2.top+"px",opacity:0,display:"none",width: document.getElementById("atitle4").offsetWidth+"px",height: document.getElementById("atitle4").offsetHeight+"px"},"fast");
+                
+		purchases[purchases.length]=purchases[Math.floor(Math.random() * purchases.length)];
+		updatePurchaseList();
+			updatePurchases();
+            }
+};
+    /* -------------------------------------- Available parameters --------------------------------------*/
+    var options = {
+        DecodeQRCodeRate: 5,                    // null to disable OR int > 0 !
+        DecodeBarCodeRate: 5,                   // null to disable OR int > 0 !
+        successTimeout: 500,                    // delay time when decoding is succeed
+        codeRepetition: true,                   // accept code repetition true or false
+        tryVertical: true,                      // try decoding vertically positioned barcode true or false
+        frameRate: 15,                          // 1 - 25
+        width: 320,                             // canvas width
+        height: 240,                            // canvas height
+        constraints: {                          // default constraints
+            video: {
+                mandatory: {
+                    maxWidth: 1280,
+                    maxHeight: 720
+                },
+                optional: [{
+                    sourceId: true
+                }]
+            },
+            audio: false
+        },
+        flipVertical: false,                    // boolean
+        flipHorizontal: false,                  // boolean
+        zoom: -1,                               // if zoom = -1, auto zoom for optimal resolution else int
+        beep: 'content/beep.mp3',                 // string, audio file location
+        decoderWorker: 'content/DecoderWorker.js',   // string, DecoderWorker file location
+        brightness: 0,                          // int
+        autoBrightnessValue: false,             // functional when value autoBrightnessValue is int
+        grayScale: false,                       // boolean
+        contrast: 0,                            // int
+        threshold: 0,                           // int 
+        sharpness: [],      // to On declare matrix, example for sharpness ->  [0, -1, 0, -1, 5, -1, 0, -1, 0]
+        resultFunction: function(result) {
+            /*
+                result.format: code format,
+                result.code: decoded string,
+                result.imgData: decoded image data
+            */
+            alert(result.code);
+        },
+        cameraSuccess: function(stream) {           //callback funtion to camera success
+            console.log('cameraSuccess');
+        },
+        canPlayFunction: function() {               //callback funtion to can play
+            console.log('canPlayFunction');
+        },
+        getDevicesError: function(error) {          //callback funtion to get Devices error
+            console.log(error);
+        },
+        getUserMediaError: function(error) {        //callback funtion to get usermedia error
+            console.log(error);
+        },
+        cameraError: function(error) {              //callback funtion to camera error  
+            console.log(error);
+        }
+    };
+decoder=	new WebCodeCamJS("#videopurchase");
+decoder.init(arg)
+decoder.getOptimalZoom();
+/*    /*---------------------------- Example initializations Javascript version ----------------------------*/
+//    new WebCodeCamJS("canvas").init(arg);
+    /* OR */
+    //var canvas = document.querySelector('#webcodecam-canvas');
+    //new WebCodeCamJS(canvas).init();
+    /* OR */
+//    new WebCodeCamJS('#webcodecam-canvas').init();
+
+    /*------------------------ Example initializations jquery & Javascript version ------------------------*/
+//    var decoder = new WebCodeCamJS('#videopurchase');
+
+//    var decoder = $("#videopurchase").WebCodeCamJQuery(args).data().plugin_WebCodeCamJQuery;
+
+//    decoder.buildSelectMenu('#camera-select', sel); //sel : default camera optional
+    /* Chrome & ': build select menu
+    *  Firefox: the default camera initializes, return decoder object 
+    s*/
+    //simple initialization
+  //  decoder.init();
+    /* Select environment camera if available */
+  //  decoder.buildSelectMenu('#camera-select', 'environment|back').init(args);
+    /* Select user camera if available */
+  //  decoder.buildSelectMenu('#camera-select', 'user|front').init(args);
+   // /* Select camera by name */
+   // decoder.buildSelectMenu('#camera-select', 'facecam').init(args);
+    /* Select first camera */
+ //   decoder.buildSelectMenu('#camera-select', 0).init(args);
+    /* Select environment camera if available, without visible select menu*/
+  //  decoder.buildSelectMenu(document.createElement('select'), 'environment|back').init().play();   
+
+    /* --------------------------------------- Available Functions: ----------------------------------------*/
+    /* camera stop & delete stream */
+    //decoder.stop();
+    /* camera play, restore process */
+    //decoder.play();
+    /* get current image from camera */
+    decoder.getLastImageSrc();
+    /* decode local image */
+    /* if url is defined download image before staring open process */
+    //decoder.decodeLocalImage(url);
+    /* get optimal zoom */
+    //decoder.getOptimalZoom();
+    /* Configurable options */
+    //decoder.options['parameter'];
+    /* Example: 
+    ** decoder.options.brightness = 20;         - set brightness to 20
+    ** decoder.options.DecodeQRCodeRate = null; - disable qrcode decoder
+    */
+        </script>
+</body>
+</html>
