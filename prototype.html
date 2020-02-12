@@ -18,26 +18,26 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/images/mwm_logo_144.png">
     <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" type="text/css" href="Content/LTRMain.css">
+    <link rel="stylesheet" type="text/css" href="LTRMain.css">
 </head>
 <body style='user-select:none; font-size:3vh;overflow:hidden; margin: 0px; padding: 0px; font-family: @Html.Raw(MWMResources.Resources.Site.FontName);'>
 <div id="productanim" style="display:none;position:absolute;border-color:white;border-width:4px;z-index: 4000000;width: 200px;height: 200px;background-color: white;opacity: 0.5;"></div>
 
- <script type="text/javascript" src="scripts/jquery-1.10.2.min.js"></script>
- <script type="text/javascript" src="content/pico.js"></script>
-<script type="text/javascript" src="content/qrcodelib.js"></script>
-<script type="text/javascript" src="content/DecoderWorker.js"></script>
-        <script type="text/javascript" src="content/webcodecamjs.js"></script>
+ <script type="text/javascript" src="jquery-1.10.2.min.js"></script>
+ <script type="text/javascript" src="pico.js"></script>
+<script type="text/javascript" src="qrcodelib.js"></script>
+<script type="text/javascript" src="DecoderWorker.js"></script>
+        <script type="text/javascript" src="webcodecamjs.js"></script>
 
  <script type="text/javascript" src="contents"></script>
 <script type="text/javascript" src="scripts/MWMAPI.js"></script>
 <video></video>
 <div id="pagecontainer" class="isinvisible1rt">
-    <div id="countrychoice" class="flagvisible"><img onclick="showFlags();" id="languagec" style="cursor: pointer;width:8vh" src="Content/en-usa.png" /></div>
+    <div id="countrychoice" class="flagvisible"><img onclick="showFlags();" id="languagec" style="cursor: pointer;width:8vh" src="en-usa.png" /></div>
 
     <div id="title" class="newsinvisible"></div>
     <div id="flagswin" class="flagswindow closedwindow" style="visibility: hidden">
-        <p><button onclick="currentflag='en-usa';translate1('en');closeFlags();" style="width: 100%;padding:1vh"><img style="width:8vh" src="Content//en-usa.png" /><div> English</div></button></p>
+        <p><button onclick="currentflag='en-usa';translate1('en');closeFlags();" style="width: 100%;padding:1vh"><img style="width:8vh" src="en-usa.png" /><div> English</div></button></p>
         <p>
             <button onclick="currentflag='cn-sm';translate1('cn');closeFlags();" style="width: 100%;padding:1vh"><img style="width:8vh" src="Content//cn-sm.png" /><div> 普通话</div></button>
         </p>
