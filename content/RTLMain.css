@@ -1,0 +1,316 @@
+﻿.toptitlediv {
+    position: absolute;
+    top: 1vh;
+    transition: all 0.5s;
+    right: 1vh;
+    /* width: 29vw; */
+    text-align: right;
+    direction: rtl;
+    z-index: 10000;
+    overflow: hidden;
+    height: 18vh;
+    width: 90%;
+    z-index: 1000;
+}
+
+.newsinvisible {
+    transition: all 0.5s;
+    position: absolute;
+    top: 11vh;
+    right: -140vw;
+    font-size: 2vh;
+    color: rgb(255,255,255);
+    z-index: 22000;
+    width: 80vw;
+}
+
+.toptitle {
+    position: absolute;
+    transition: all 0.5s;
+    top: 0vh;
+    right: 3vw;
+    font-size: 8.5vh;
+    color: rgb(255,255,255);
+    cursor: pointer;
+}
+
+
+.toinvisible {
+    transition: all 1s;
+    position: absolute;
+    bottom: -1000px;
+    right: -1000px;
+    opacity: 0.5;
+}
+
+.mainshow {
+    transition: all 0.5s;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    opacity: 1;
+    top: 49vh;
+}
+
+
+
+.contentdata {
+    z-index: 1001;
+    font-size: 3vh;
+    color: rgb(255,190,15);
+    width: 47vw;
+    top: 22vh;
+    position: absolute;
+    top: -2vh;
+    right: 3vh;
+    min-width: 52vh;
+    bottom: 0px;
+    direction: rtl;
+}
+
+.imagemenus {
+    opacity: 0.3;
+    position: absolute;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    width: 41vw;
+}
+
+.atitle0 {
+    cursor: pointer;
+    position: absolute;
+    transition: all 0.5s;
+    top: 0vh;
+    right: 3vw;
+    font-size: 3.5vh;
+    z-index: 20000;
+    width: 25vh;
+    color: rgb(255,255,255);
+    opacity: 0.6;
+}
+
+.atitle3 {
+    cursor: pointer;
+    position: absolute;
+    transition: all 0.5s;
+    top: 15vh;
+    right: 12vw;
+    font-size: 6vh;
+    color: white;
+    z-index: 20000;
+    width: 25vh;
+    color: rgb(255,255,255);
+    opacity: 0.9;
+}
+
+.atitle4 {
+    cursor: pointer;
+    position: absolute;
+    transition: all 0.5s;
+    top: 22vh;
+    right: 14vw;
+    font-size: 7vh;
+    color: white;
+    width: 25vh;
+    z-index: 20000;
+    color: rgb(255,255,255);
+    opacity: 1;
+}
+
+.newsvisible {
+    transition: all 0.5s;
+    position: absolute;
+    top: 11vh;
+    right: 3vw;
+    font-size: 2vh;
+    color: rgb(255,255,255);
+    z-index: 22000;
+    width: 80vw;
+}
+
+
+.newsinvisible {
+    transition: all 0.5s;
+    position: absolute;
+    top: 11vh;
+    right: -140vw;
+    font-size: 2vh;
+    color: rgb(255,255,255);
+    z-index: 22000;
+    width: 80vw;
+}
+
+.atitle1 {
+    cursor: pointer;
+    position: absolute;
+    transition: all 0.5s;
+    top: 4vh;
+    right: 6vw;
+    font-size: 4.5vh;
+    z-index: 20000;
+    width: 25vh;
+    color: rgb(255,255,255);
+    opacity: 0.7;
+}
+
+.atitle2 {
+    cursor: pointer;
+    position: absolute;
+    transition: all 0.5s;
+    top: 9vh;
+    right: 9vw;
+    font-size: 5.5vh;
+    width: 25vh;
+    z-index: 20000;
+    color: rgb(255,255,255);
+    opacity: 0.8;
+}
+
+.menusdiv {
+    position: absolute;
+    top: 18vh;
+    transition: all 0.5s;
+    right: 0px;
+    direction: rtl;
+}
+
+
+.copyrightnote {
+    font-size: 2vh;
+    color: rgb(190,190,190);
+    position: absolute;
+    width: 100%;
+    bottom: 5px;
+    padding-right: 1vh;
+    direction: rtl;
+}
+a{
+    text-decoration: none;
+    color: red;
+}
+
+button {
+    border-radius: 25px;
+    border: 1px solid white;
+    background-color: transparent;
+    color: white;
+    font-size: 3vh;
+    cursor: pointer;
+}
+
+.remotewindow {
+    position: absolute;
+    margin: auto;
+    position: absolute;
+    top: 0px;
+    left: 0px width: 40vh;
+    opacity: 0.9;
+    background-color: rgb(200,200,200);
+    display: block;
+    font-size: 3vh;
+    width: 49vh;
+    padding: 3vh;
+    border-radius: 25px;
+    text-align: center;
+    transform: rotate3d(0,1,0,0deg);
+    transition: transform 0.5s
+}
+
+.flagswindow {
+    position: absolute;
+    margin: auto;
+    position: absolute;
+    top: 0px;
+    left: 0px width: 40vh;
+    opacity: 0.9;
+    background-color: rgb(200,200,200);
+    display: block;
+    font-size: 3vh;
+    width: 49vh;
+    padding: 3vh;
+    border-radius: 25px;
+    text-align: center;
+    transform: rotate3d(0,1,0,0deg);
+    transition: transform 0.5s
+}
+
+.inputids {
+    font-size: 5vh;
+    width: 30vh;
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: transparent;
+}
+
+.shadowbox {
+    position: fixed;
+    background-color: rgba(0,0,0,0.1);
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.closedwindow {
+    transform: rotate3d(0,1,0,90deg);
+    transition: transform 0.5s;
+}
+
+.cclabels {
+    font-size: 5vh;
+}
+
+.flagvisible {
+    position: absolute;
+    top: 2vh;
+    left: 0px;
+    width: auto;
+    z-index: 10000;
+    padding: 2vh;
+}
+
+.toptitlediv2 {
+    position: absolute;
+    top: 31vh;
+    transition: all 0.5s;
+    right: 1vh;
+    /* width: 29vw; */
+    text-align: right;
+    direction: rtl;
+    z-index: 10000;
+    overflow: hidden;
+    height: 18vh;
+    width: 90%;
+    z-index: 1000;
+}
+
+.menusdiv2 {
+    position: absolute;
+    top: 1vh;
+    transition: all 0.5s;
+    right: 0px;
+    direction: rtl;
+}
+
+.glyph1 {
+    transition: all 0.5s;
+    width: 10vh;
+}
+
+.glyph2 {
+    transition: all 0.5s;
+    width: 45vh;
+}
+
+.isinvisible {
+    display: none;
+    transition: all 1s;
+    opacity: 0.0;
+}
+
+.isvisible {
+    display: ;
+    transition: all 1s;
+    opacity: 1;
+}

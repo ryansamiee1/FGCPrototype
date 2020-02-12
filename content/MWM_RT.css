@@ -1,0 +1,622 @@
+﻿
+body 
+{
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7c7c7c+0,ffffff+11,ffffff+90,7c7c7c+100 */
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#db6d00+0,ffffff+11,ffffff+90,db6d00+100 */
+/*background: rgb(219,109,0); /* Old browsers */
+/*background: -moz-linear-gradient(left,  rgba(219,109,0,1) 0%, rgba(255,255,255,1) 11%, rgba(255,255,255,1) 90%, rgba(219,109,0,1) 100%); /* FF3.6-15 */
+/*background: -webkit-linear-gradient(left,  rgba(219,109,0,1) 0%,rgba(255,255,255,1) 11%,rgba(255,255,255,1) 90%,rgba(219,109,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
+/*background: linear-gradient(to right,  rgba(219,109,0,1) 0%,rgba(255,255,255,1) 11%,rgba(255,255,255,1) 90%,rgba(219,109,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+/*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#db6d00', endColorstr='#db6d00',GradientType=1 ); /* IE6-9 */*/*/
+
+    background-color: ghostwhite ;
+    font-family: 'Open Sans Condensed','Arial Narrow', serif/*"Lato","Helvetica Neue",Helvetica,Arial,sans-serif;*/
+;
+}
+
+.the-blur{
+   position: fixed;
+   top:0;
+   width: 100%;
+   min-height: 50px;
+   margin-bottom: 20px;
+   background: rgba(0,0,0,.4);
+   z-index:1010;
+   -webkit-filter: blur(20px);
+   -moz-filter: blur(20px);
+   -o-filter: blur(20px);
+   -ms-filter: blur(20px);
+   filter: blur(20px);
+}
+
+.targetpc_show
+{
+    height: 60px;
+}
+.mwmrt_disabled
+{
+    border: 1px solid #003366;
+    background-color: grey;
+    position: absolute;
+    left: 0px;
+    overflow: auto;
+}
+[type="text"]
+{
+    /*height: 35px;
+    font-size: large;
+    width: 200px;
+    border:1px solid;
+    border-color:#0083FF;*/
+
+    height: 34px;
+    width: 200px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+textarea {
+    font-size: large;
+    border:1px solid;
+    border-color:#0083FF;
+}
+.mwmcombo {
+    display: inline-block; position: relative;
+}
+.middlex {
+    line-height:0.5;
+}
+.input_default {
+    height: 35px;
+    font-size: large;
+    width: 200px;
+    /*border:1px solid;
+    border-color:#0083FF;*/
+
+}
+
+input[type=text] {
+    box-shadow: none;
+    border:none;
+    border-bottom: 1px dashed black;
+    border-radius: 0px;
+}
+
+.input_tick 
+{
+    background-image:url(/Content/tick.png);
+    background-position:right;
+    background-repeat:no-repeat;
+    padding-right:20px;
+    height: 35px;
+    font-size: large;
+    width: 200px;
+    /*border:1px solid;
+    border-color:#0083FF;*/
+border:none;
+    border-bottom: 1px solid #0083FF;
+
+}
+
+.input_cancel 
+{
+    background-image:url(/Content/Action-delete-icon.png);
+    background-position:right;
+    background-repeat:no-repeat;
+    padding-right:25px;
+    height: 35px;
+    font-size: large;
+    width: 200px;
+
+    /*border:1px solid;
+    border-color:#0083FF;*/
+}
+
+.input_required  
+{
+    background-image:url(/Content/Required.png);
+    background-position:right;
+    background-repeat:no-repeat;
+    padding-right:25px;
+    height: 35px;
+    font-size: large;
+    width: 200px;
+    /*border-bottom:1px solid;
+    border-color:#0083FF;*/
+    border:none;
+    border-bottom: 1px solid #0083FF;
+}
+
+input[type="password"]
+{
+    height: 34px;
+    width: 200px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    /*border: 1px solid #ccc;
+    border-radius: 4px;*/
+    border:none;
+    border-bottom: 1px solid black;
+    box-shadow: none;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+/*    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);*/
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.mwmrt_enabled
+{
+    border: 1px solid #003366;
+    background-color: #FFFFFF;
+    position: absolute;
+    left: 0px;
+    overflow: auto;
+}
+
+
+.mwmrt_background
+{
+    background-repeat: repeat;
+/*    overflow: auto;*/
+    height: 640px;
+    width: 80px;
+}
+
+.mwmrt_login
+{
+    border-style: solid;
+    border-width: 1px 0px 1px 0px;
+    border-color: #0099CC;
+    width: 100%;
+    height: 150px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #FFFFFF;
+    font-size: small;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+.mwmrt_text
+{
+    border: 1px solid #E6E6E6;
+    font-family: arial, Helvetica, sans-serif;
+    font-size: small;
+    color: #003300;
+}
+.mwmrt_text:focus
+{
+    border: 1px solid #3399FF;
+    font-family: arial, Helvetica, sans-serif;
+    font-size: small;
+}
+
+.connected_status
+{
+/*    margin: 2px;*/
+    cursor: pointer;
+    overflow: hidden;
+    padding: 4px;
+    color: white;
+    border-color: grey;
+    border-style: solid;
+    border-width: 1px;
+    color: #FFFFFF;
+    font-family: arial, Helvetica, sans-serif;
+    font-size: small;
+    z-index: 15000;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 150px;
+    height: 18px;
+    background: black; 
+}
+.screensmallview
+{
+    border: 1px solid #0000FF;
+    width: 110px;
+    height: 90px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: x-small;
+    color: black;
+    float: left;
+}
+
+.screensmallview:hover
+{
+    width: 110px;
+    height: 90px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: x-small;
+    color: white;
+    float: left;
+    background-color: #0083FF;
+}
+
+.view
+{
+    border: 1px groove #0033CC;
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    overflow: scroll;    
+}
+
+.hswindow
+ {  
+  transition: left 0.5s ease;
+
+    position: absolute;
+    z-index: 25000;
+    overflow: hidden; /*scroll;/*visible;/*hidden;*/
+    -webkit-box-shadow: 9px 12px 53px 0px rgba(0,0,0,0.63);
+    -moz-box-shadow: 9px 12px 53px 0px rgba(0,0,0,0.63);
+    box-shadow: 9px 12px 53px 0px rgba(0,0,0,0.63);
+    background: white;
+    color: #000000;
+}
+
+.METROITEM
+{
+    cursor: pointer;
+    border: 1px solid #99CCFF;
+    margin: 3px;
+    width: 130px;
+    height: 60px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+    color: #FFFFFF;
+    background-color: #0083FF;
+    float: left;
+    overflow: hidden;
+}
+.METROITEMSELECTED
+{
+    cursor: pointer;
+    border: 1px solid #003366;
+    margin: 3px;
+    width: 130px;
+    height: 60px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+    color: #FFFFFF;
+    background-color: #0066FF;
+    float: left;
+    overflow: hidden;
+    background-image: url('/content/tick.png');
+    background-repeat: no-repeat;
+    font-weight: bold;
+}
+
+.METROFOLDERITEM
+{
+    cursor: pointer;
+    border: 1px solid #FF9966;
+    margin: 3px;
+    width: 130px;
+    height: 60px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+    color: #003300;
+    background-color: #FFCC00;
+    float: left;
+    overflow: hidden;
+    font-weight: bold;
+}
+.METROFOLDERITEMSELECTED 
+{
+    cursor: pointer;
+    border: 1px solid #FF9966;
+    margin: 3px;
+    width: 130px;
+    height: 60px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: xx-small;
+    color: #FFFFFF;
+    background-color: #FFCC00;
+    float: left;
+    overflow: hidden;
+    background-image: url('tick.png');
+    background-repeat: no-repeat;
+}
+.collapsing {
+    -webkit-transition: none;
+    transition: none;
+}
+.LISTVIEWITEM
+{
+    padding: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    color: black;
+    background-color: White;
+    margin-bottom: 3px;
+    border-width: 1px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: silver;
+    font-size: 15px;
+    border-radius: 15px;
+/*    background-color: #FFFFFF;*/
+}
+
+.LISTVIEWITEMMORE
+{
+    padding: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    color: black;
+    background-color: #f0f8ff;
+    margin: 0px;
+    border-width: 1px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #0066ff;
+}
+
+.LISTVIEWITEMNONE
+{
+    display: none;
+}
+
+.LISTVIEWITEMINFO
+{
+    padding: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    color: grey;
+    background-color: white;
+    margin-bottom: 3px;
+    border-width: 1px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: silver;
+    font-size: 15px;
+}
+
+.LISTVIEWITEMSELECTED
+{
+    overflow: hidden;
+    cursor: pointer;
+    margin: 3px;
+    color: #FFFFFF;
+    background-color: #0066FF;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ffcc00;
+    background-image: url('tick.png');
+    background-repeat: no-repeat;
+    height: auto;
+    width: auto;
+}
+.hswindowbottom
+{
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #C0C0C0;
+}
+.hswindowtop
+{
+    position: absolute;
+    background-color: #0083FF; /*#66CCFF;*/
+    font-size: large;
+    height: 25px; 
+    font-size: large;
+    color: #FFFFFF;
+    font-variant: normal;
+    vertical-align: middle;
+    padding-top: 6px;
+    padding-left: 6px;
+}
+.hswindowbody
+{
+    overflow: auto;
+    border-color: #FFCC00;
+    position: absolute;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    color: black;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.panel
+{
+    padding: 5px;
+    margin: 5px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.mask{
+    z-index: 500;
+    position: absolute;
+    background-color: #ccc;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    background: rgba(212,228,239,0.08);
+background: -moz-linear-gradient(left, rgba(212,228,239,0.08) 0%, rgba(134,174,204,0.05) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(212,228,239,0.08)), color-stop(100%, rgba(134,174,204,0.05)));
+background: -webkit-linear-gradient(left, rgba(212,228,239,0.08) 0%, rgba(134,174,204,0.05) 100%);
+background: -o-linear-gradient(left, rgba(212,228,239,0.08) 0%, rgba(134,174,204,0.05) 100%);
+background: -ms-linear-gradient(left, rgba(212,228,239,0.08) 0%, rgba(134,174,204,0.05) 100%);
+background: linear-gradient(to right, rgba(212,228,239,0.08) 0%, rgba(134,174,204,0.05) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4e4ef', endColorstr='#86aecc', GradientType=1 );
+}
+
+.keyboard
+{
+  transition: opacity 0.5s ease-in-out;
+    padding: 2px;
+    position: absolute;
+    display: block;
+    background-color: black;/*rgba(80%, 80%, 80%, 0.8);*/
+    z-index: 24000;
+    opacity: 0.9;
+}
+
+.keyboardCanvas {
+    position: absolute;
+    display: block;
+    background-color: black;/*rgba(80%, 80%, 80%, 1);*/
+    z-index: 55000;
+/*    opacity: 1*/
+}
+
+
+.ioprogress
+{
+    position: absolute;
+    height: 15px;
+    width: 100px;
+}
+
+.iopercentage
+{
+    background-color: #0083FF;
+    width: 0%;
+    height: 15px;
+}
+
+.addtionalinfo
+{
+}
+button {
+    /*cursor: pointer;
+    border: 1px solid #000000;
+    font-size: medium;
+    color: #000000;
+    background-color: #FFFFFF;
+    width: 100px;
+    height: 40px;*/
+    background-color: transparent;/*#009dff;*/
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid rgb(100,100,100);
+    border-radius: 20px;
+    color: rgb(100,100,100);
+}
+
+
+    button:hover {
+        /*cursor: pointer;
+    border: 1px solid #000000;
+    font-size: medium;
+    color: #FFFFFF;
+    background-color: #0083FF;
+    width: 100px;
+    height: 40px;*/
+        color: rgb(0,0,0);
+        /*background-color: #009d00*/;
+        display: inline-block;
+        padding: 6px 12px;
+        margin-bottom: 0;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.42857143;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        -ms-touch-action: manipulation;
+        touch-action: manipulation;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-image: none;
+        border: 1px solid black;
+    }
+hr
+{
+    /*border: 1px solid #0083FF;*/
+}
+
+input[type=radio]{
+    cursor: pointer;
+background-color:#fff;
+border:1px solid #dfdfdf;
+border-radius:20px;
+cursor:pointer;
+display:inline-block;
+height:30px;
+position:relative;
+vertical-align:middle;
+width:50px;-moz-user-select:none;
+-khtml-user-select:none;
+-webkit-user-select:none;
+-ms-user-select:none;
+user-select:none;
+box-sizing:content-box;
+    background-clip: content-box;
+}
+
+
+input[type=radio], input[type=checkbox] {
+		display:none;
+	}
+
+input[type=radio] + label, input[type=checkbox] + label {
+    cursor: pointer;
+background-color:#fff;
+border:1px solid #dfdfdf;
+border-radius:20px;
+cursor:pointer;
+display:inline-block;
+height:30px;
+position:relative;
+vertical-align:middle;
+width:30px;-moz-user-select:none;
+-khtml-user-select:none;
+-webkit-user-select:none;
+-ms-user-select:none;
+user-select:none;
+box-sizing:content-box;
+    background-clip: content-box;
+	     padding: 3px;
+
+	}
+
+	 input[type=radio]:checked + label, input[type=checkbox]:checked + label{
+background-color:#0083FF;
+	     padding: 3px;
+	     border:1px solid #0083FF;
+
+	}
